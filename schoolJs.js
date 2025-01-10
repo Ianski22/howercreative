@@ -1,11 +1,3 @@
-function openNav() {
-  document.getElementById("myNav").style.height = "100%";
-}
-
-function closeNav() {
-  document.getElementById("myNav").style.height = "0%";
-}
-
 var today = new Date();
 var hourNow = today.getHours();
 var greeting;
@@ -21,3 +13,13 @@ if(hourNow > 18) {
 }
 
 document.write('<h3>' + greeting + '</h3>'); 
+
+
+function openNav() {
+  document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.height = "0%";
+}
+
