@@ -85,7 +85,13 @@
 	<footer>
 <p>Ian Hower</p>
 			</footer>
-	   <script src="script.js"></script>
+	   <script src="script.js">
+		   document.addEventListener('DOMContentLoaded', function () {
+  var msg = 'Sign up to receive newsletter for 10% off!';
+  var el = document.getElementById('message');
+  el.textContent = msg;
+});
+	   </script>
   </body>
  
 </html>
