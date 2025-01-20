@@ -1,23 +1,11 @@
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
+// Event listener for DOM content loaded
+document.addEventListener('DOMContentLoaded', function () {
+  // Message for newsletter
+  const msg = 'Sign up to receive newsletter for 10% off!';
+  const el = document.getElementById('message');
+  if (el) el.textContent = msg;
 
-signUpButton.addEventListener('click', () => {
-	container.classList.add("right-panel-active");
-});
-
-signInButton.addEventListener('click', () => {
-	container.classList.remove("right-panel-active");
-});
-
- document.addEventListener('DOMContentLoaded', function () {
-  var msg = 'Sign up to receive newsletter for 10% off!';
-  var el = document.getElementById('message');
-  el.textContent = msg;
-});
-
-// JavaScript to dynamically display the greeting
-document.addEventListener("DOMContentLoaded", function () {
+  // Greeting message
   const today = new Date();
   const hourNow = today.getHours();
   let greeting;
@@ -32,25 +20,24 @@ document.addEventListener("DOMContentLoaded", function () {
     greeting = 'Welcome!';
   }
 
-  // Insert the greeting into the div with id="greeting"
-  document.getElementById("greeting").innerHTML = `<p style="color: green;">${greeting}</p>`;
+  const greetingEl = document.getElementById('greeting');
+  if (greetingEl) greetingEl.innerHTML = `<p style="color: green;">${greeting}</p>`;
 });
 
 // Functions for opening and closing navigation
 function openNav() {
-  document.getElementById("myNav").style.height = "100%";
+  const nav = document.getElementById('myNav');
+  if (nav) nav.style.height = '100%';
 }
 
 function closeNav() {
-  document.getElementById("myNav").style.height = "0%";
+  const nav = document.getElementById('myNav');
+  if (nav) nav.style.height = '0%';
 }
 
-var expiryMsg;
-	var today = new Date();
-	var elEnds;
-
-	function offerExpires(today) {
-	  var weekFromToday, day, date, month, year, dayNames, monthNames;
+// Offer expiration message
+function offerExpires(today) {
+  let weekFromToday, day, date, month, year, dayNames, monthNames;
 
   // Calculate one week from today
   weekFromToday = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
@@ -66,13 +53,14 @@ var expiryMsg;
   year = weekFromToday.getFullYear();
 
   // Create the message
-  expiryMsg = `Offer expires next ${day}, ${month} ${date}, ${year}.`;
+  const expiryMsg = `Offer expires next ${day}, ${month} ${date}, ${year}.`;
 
   // Insert into the HTML element
-  elEnds = document.getElementById('offerEnds');
-  elEnds.textContent = expiryMsg;
-  }
+  const elEnds = document.getElementById('offerEnds');
+  if (elEnds) elEnds.textContent = expiryMsg;
+}
 
-	// Call the function
-	offerExpires(today);
+// Call the function
+offerExpires(new Date());
+
 
