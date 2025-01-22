@@ -63,4 +63,19 @@ function offerExpires(today) {
 // Call the function
 offerExpires(new Date());
 
+var i =; 
+var msg = '';
+
+do { 
+  msg += i ' x 5 = ' + (i * 5) + '<br />';
+  1++;
+} while (i < 1);
+
+document.getElementById('answer').inmnerHTML = msg;
+
+
+
+
+
+
 
