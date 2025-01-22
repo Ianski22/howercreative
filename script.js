@@ -69,7 +69,7 @@ var msg = ''; // Initialize an empty string for the message
 do {
   msg += i + ' x 5 = ' + (i * 5) + '<br />';
   i++; // Increment i
-} while (i <= 10); // Loop until i is greater than 10
+} while (i <= 3); // Loop until i is greater than 10
 
 // Insert the message into the element with ID 'answer'
 document.getElementById('answer').innerHTML = msg;
