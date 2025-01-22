@@ -63,15 +63,16 @@ function offerExpires(today) {
 // Call the function
 offerExpires(new Date());
 
-var i =; 
-var msg = '';
+var i = 1; // Initialize i to 1
+var msg = ''; // Initialize an empty string for the message
 
-do { 
-  msg += i ' x 5 = ' + (i * 5) + '<br />';
-  1++;
-} while (i < 1);
+do {
+  msg += i + ' x 5 = ' + (i * 5) + '<br />';
+  i++; // Increment i
+} while (i <= 10); // Loop until i is greater than 10
 
-document.getElementById('answer').inmnerHTML = msg;
+// Insert the message into the element with ID 'answer'
+document.getElementById('answer').innerHTML = msg;
 
 
 
