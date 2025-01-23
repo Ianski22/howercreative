@@ -60,20 +60,18 @@ function offerExpires(today) {
   if (elEnds) elEnds.textContent = expiryMsg;
 }
 
-// Call the function
-offerExpires(new Date());
-
+// Chapter 4: Decision Loop 
 var i = 1; // Initialize i to 1
 var msg = ''; // Initialize an empty string for the message
+var hobbies = ['Photography', 'Web Design', 'Graphic Design']; // List of hobbies
 
 do {
-  msg += i + ' x 5 = ' + (i * 5) + '<br />';
+  msg += i + '. ' + hobbies[(i - 1) % hobbies.length] + '<br />'; // Cycle through hobbies
   i++; // Increment i
-} while (i <= 3); // Loop until i is greater than 10
+} while (i <= 10); // Loop until i is greater than 10
 
 // Insert the message into the element with ID 'answer'
 document.getElementById('answer').innerHTML = msg;
-
 
 
 
