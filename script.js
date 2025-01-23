@@ -68,7 +68,7 @@ var hobbies = ['Photography', 'Web Design', 'Graphic Design']; // List of hobbie
 do {
   msg += i + '. ' + hobbies[(i - 1) % hobbies.length] + '<br />'; // Cycle through hobbies
   i++; // Increment i
-} while (i <= 10); // Loop until i is greater than 10
+} while (i <= 3); // Loop until i is greater than 3
 
 // Insert the message into the element with ID 'answer'
 document.getElementById('answer').innerHTML = msg;
