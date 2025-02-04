@@ -721,3 +721,44 @@ button {
 #extraText {
   display: none; 
 }
+
+/* Container for the button and FAQ section */
+.about-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers everything horizontally */
+  text-align: center;  /* Ensures text is centered */
+}
+
+/* Hide FAQ content by default */
+#extraText {
+  display: none; /* Hide the FAQs initially */
+  margin-top: 10px; /* Space between the button and the FAQs */
+  width: 100%; /* Ensure it takes up full width for centering */
+}
+
+/* Ensure FAQ container is centered */
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center FAQ items */
+}
+
+/* Style for each FAQ item */
+.faq {
+  margin-bottom: 10px; /* Space between FAQ items */
+  width: 90%; /* Limit width of each FAQ item */
+}
+
+/* Optional: Style for each question */
+.faq h3 {
+  margin: 0;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Optional: Style for each answer */
+.faq p {
+  margin-top: 5px;
+  color: #666;
+}
