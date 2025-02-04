@@ -754,11 +754,11 @@ button {
 .faq h3 {
   margin: 0;
   font-weight: bold;
-  color: #333;
+  color: #ffffff;
 }
 
 /* Optional: Style for each answer */
 .faq p {
   margin-top: 5px;
-  color: #666;
+  color: #ffffff;
 }
