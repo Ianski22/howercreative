@@ -696,3 +696,24 @@ button {
     width: 30px;
     height: 30px;
 }
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.faq {
+  margin-bottom: 20px;
+}
+
+.faq h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.faq p {
+  white-space: pre-line;  
+  line-height: 1.6;
+  font-size: 1.1em;
+}
