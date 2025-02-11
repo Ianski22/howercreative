@@ -1,3 +1,3 @@
-$(document).ready(function(){
-    $(".text-content").hide().fadeIn(1500); // Adjust duration as needed
+$(document).ready(function() {
+    $("body").css("display", "none").fadeIn(1500);
 });
