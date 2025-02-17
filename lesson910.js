@@ -5,8 +5,8 @@
 
   function onYouTubeIframeAPIReady() {
     new YT.Player('youtube-player', { // Updated ID
-      height: '400',
-      width: '560',
+      height: '200',
+      width: '360',
       videoId: '1yLqKZvJ0L0',
       playerVars: { 'start': 2, 'autoplay': 0, 'controls': 1 }
     });
