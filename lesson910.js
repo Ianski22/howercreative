@@ -5,7 +5,7 @@
 
   function onYouTubeIframeAPIReady() {
     new YT.Player('youtube-player', { // Updated ID
-      height: '560',
+      height: '400',
       width: '560',
       videoId: '1yLqKZvJ0L0',
       playerVars: { 'start': 2, 'autoplay': 0, 'controls': 1 }
