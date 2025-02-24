@@ -772,3 +772,11 @@ button {
     justify-content: center;
     height: 50vh; /* Adjust height as needed */
 }
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
