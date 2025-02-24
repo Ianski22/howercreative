@@ -773,46 +773,27 @@ button {
     height: 50vh; /* Adjust height as needed */
 }
 
-body {
-    background-color: #111; /* Dark background for contrast */
-    color: white; /* Ensures all text is white */
-    text-align: center; /* Centers all text */
-}
-
-.tab-list {
-    display: flex;
-    justify-content: center; /* Centers the tabs */
-    gap: 20px; /* Adds spacing between tabs */
-    list-style: none;
-    padding: 20px 0;
-}
-
-.tab-list li {
-    display: inline-block;
-}
-
-.tab-list a {
-    display: inline-block;
-    font-size: 24px; /* Increases tab size */
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    border: 2px solid white;
-    border-radius: 10px;
-    transition: background 0.3s;
-}
-
-.tab-list a:hover,
-.tab-list .active a {
-    background: white;
-    color: black;
-}
-
 .tab-panel {
-    display: none;
-    padding: 20px;
+    display: none;              /* Hide inactive panels */
+    text-align: center;         /* Center all text */
+    color: #ffffff;             /* Make all text white */
+    max-width: 800px;           /* Optional: limit width for readability */
+    margin: 0 auto;             /* Center the block horizontally */
+    padding: 20px;              /* Add some breathing room */
 }
 
 .tab-panel.active {
-    display: block;
+    display: block;             /* Show active panel */
+}
+
+.tab-panel h2 {
+    color: #ffffff;             /* Ensure h2 is white (override if needed) */
+    margin-bottom: 15px;        /* Space below heading */
+    font-size: 2em;             /* Bigger heading for emphasis */
+}
+
+.tab-panel p {
+    color: #ffffff;             /* Ensure p is white */
+    line-height: 1.6;           /* Improve readability */
+    font-size: 1.1em;           /* Slightly larger text */
 }
