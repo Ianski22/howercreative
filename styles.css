@@ -773,27 +773,42 @@ button {
     height: 50vh; /* Adjust height as needed */
 }
 
+.tab-list {
+    list-style: none;           /* Remove default bullets */
+    padding: 0;                 /* Remove default padding */
+    margin: 0 auto;             /* Center the list horizontally */
+    max-width: 600px;           /* Optional: limit width */
+    text-align: center;         /* Center-align the inline-block li elements */
+    background-color: #1a1a1a;  /* Match dark body background */
+}
+
+.tab-list li {
+    display: inline-block;      /* Make tabs sit side by side */
+    margin: 0 10px;             /* Space between tabs */
+}
+
+.tab-list a {
+    color: #ffffff;             /* White text for tab links */
+    text-decoration: none;      /* Remove underline */
+    padding: 10px 20px;         /* Add clickable area */
+    display: block;             /* Fill the li */
+    font-size: 1.2em;           /* Bigger text */
+}
+
+.tab-list li.active a {
+    background-color: #333;     /* Darker bg for active tab */
+    font-weight: bold;          /* Emphasize active tab */
+}
+
+/* Panel Styling (unchanged from before) */
 .tab-panel {
-    display: none;              /* Hide inactive panels */
-    text-align: center;         /* Center all text */
-    color: #ffffff;             /* Make all text white */
-    max-width: 800px;           /* Optional: limit width for readability */
-    margin: 0 auto;             /* Center the block horizontally */
-    padding: 20px;              /* Add some breathing room */
+    display: none;
+    text-align: center;
+    color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .tab-panel.active {
-    display: block;             /* Show active panel */
-}
-
-.tab-panel h2 {
-    color: #ffffff;             /* Ensure h2 is white (override if needed) */
-    margin-bottom: 15px;        /* Space below heading */
-    font-size: 2em;             /* Bigger heading for emphasis */
-}
-
-.tab-panel p {
-    color: #ffffff;             /* Ensure p is white */
-    line-height: 1.6;           /* Improve readability */
-    font-size: 1.1em;           /* Slightly larger text */
-}
+    display: block;
