@@ -773,8 +773,44 @@ button {
     height: 50vh; /* Adjust height as needed */
 }
 
+body {
+    background-color: #111; /* Dark background for contrast */
+    color: white; /* Ensures all text is white */
+    text-align: center; /* Centers all text */
+}
+
+.tab-list {
+    display: flex;
+    justify-content: center; /* Centers the tabs */
+    gap: 20px; /* Adds spacing between tabs */
+    list-style: none;
+    padding: 20px 0;
+}
+
+.tab-list li {
+    display: inline-block;
+}
+
+.tab-list a {
+    display: inline-block;
+    font-size: 24px; /* Increases tab size */
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+.tab-list a:hover,
+.tab-list .active a {
+    background: white;
+    color: black;
+}
+
 .tab-panel {
     display: none;
+    padding: 20px;
 }
 
 .tab-panel.active {
