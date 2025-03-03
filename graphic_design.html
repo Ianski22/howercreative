@@ -1,135 +1,157 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Graphic_Design</title>
-	   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloucester+MT+Extra+Condensed&display=swap">
-  <link rel="stylesheet" href="styles.css">
-   <link rel="icon" href="images/logo.png" type="images/logo.png">
-  </head>
-  <body class="graphic">
-  <header>
-   <nav class="navbar">
- <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="photography.html">Photography</a></li>
-    <li><a href="graphic_design.html">Graphic Design</a></li>
-		<li><a href="contact.html">Contact</a></li>
-  </ul>
-        </nav>
-		<div class="logo">
-		<img src="images/logo.png" alt="Image 1">
-		</div>
-		</header>
-		<div class="pc_images">
-	<ul class="results">
-  <li class="result">
-    <a href="#"><img src="images/ferrari.jpg" width="500vw" height="500vh" alt=""></a>
-  </li>
-  <li class="result">
-    <a href="#"><img src="images/seahawks.jpg" width="500vw" height="500vh" alt=""></a>
-  </li>
-  <li class="result">
-   <a href="#"><img src="images/mercedes.jpg" width="500vw" height="500vh" alt=""></a>
-  </li>
-  <li class="result">
-   <a href="#"><img src="images/mj.jpg" width="500vw" height="500vh" alt=""></a>
-  </li>
-  <li class="result">
-   <a href="#"><img src="images/porsche.jpg" width="500vw" height="500vh" alt=""></a>
-  </li>
-  <li class="result">
-    <a href="#"><img src="images/seattle.jpg" width="500vw" height="500vh" alt=""></a>
-  </li>
-  <li class="result">
-   <a href="#"><img src="images/vans.jpg" width="500vw" height="500vh" alt=""></a>
-  </li>
-  <li class="result">
-    <a href="#"><img src="images/np.jpg" width="500vw" height="500vh" alt=""></a>
-  </li>
-  <li class="result">
-    <a href="#"><img src="images/gas.jpg" width="500vw" height="500vh" alt=""></a>
-  </li>
-
-</ul>
-</div>
-<main>
-
-<div id="myNav" class="overlay">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <div class="overlay-content">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="photography.html">Photography</a>
-    <a href="graphic_design.html">Graphic Design</a>
-	<a href="contact.html">Contact</a>
+<div class="filter-container">
+  <div class="filter-buttons">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="cars">Cars</button>
+    <button class="filter-btn" data-filter="sports">Sports</button>
+    <button class="filter-btn" data-filter="city">City & More</button>
   </div>
 </div>
 
-
-
-<div class="burger">
-<span onclick="openNav()">&#9776;</span>
-</div>
-
-
-
-
- <div class="gallery-container">
+<style>
+  .filter-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    font-family: 'Gloucester MT Extra Condensed', sans-serif;
+  }
   
-	
-	
-	
-	
-<!-- MOBILE IMAGES --> 
- <div class="gallery">
-        <div class="gallery-item">
-            <img src="images/ferrari.jpg" alt="Image 1" >
-        </div>
-        <div class="gallery-item">
-            <img src="images/seahawks.jpg" alt="Image 2">
-        </div>
-		<div class="gallery-item">
-            <img src="images/mercedes.jpg" alt="Image 2">
-        </div>
-		<div class="gallery-item">
-            <img src="images/mj.jpg" alt="Image 2">
-        </div>
-		<div class="gallery-item">
-            <img src="images/porsche.jpg" alt="Image 2">
-        </div>
-		<div class="gallery-item">
-            <img src="images/seattle.jpg" alt="Image 2">
-        </div>
-		<div class="gallery-item">
-            <img src="images/vans.jpg" alt="Image 2">
-        </div>
-		<div class="gallery-item">
-            <img src="images/np.jpg" alt="Image 2">
-        </div>
-        <div class="gallery-item">
-            <img src="images/gas.jpg" alt="Image 3">
-        </div>
-        <!-- Add more images as needed -->
-		
-		
-    </div>
-	
+  .filter-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .filter-btn {
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Gloucester MT Extra Condensed', sans-serif;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .filter-btn:hover {
+    background-color: #ddd;
+  }
+  
+  .filter-btn.active {
+    background-color: #333;
+    color: white;
+  }
+  
+  /* Animation for the filtered items */
+  .result, .gallery-item {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    .filter-btn {
+      font-size: 1rem;
+      padding: 6px 12px;
+    }
+  }
+</style>
 
-	
-  <script src="script.js"></script>
-	  <script src="lesson78.js"></script>
-
-	
-
-	<footer>
-<p>Ian Hower</p>
-			</footer>
-	   <script src="index.js"></script>
-  </body>
-
-</html>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Define image categories
+    const categories = {
+      cars: ['ferrari.jpg', 'mercedes.jpg', 'porsche.jpg'],
+      sports: ['seahawks.jpg', 'mj.jpg', 'np.jpg'],
+      city: ['seattle.jpg', 'vans.jpg', 'gas.jpg']
+    };
+    
+    // Add data attributes to each image container
+    function addCategoryAttributes() {
+      // For desktop layout
+      document.querySelectorAll('.results .result').forEach(item => {
+        const imgSrc = item.querySelector('img').getAttribute('src');
+        const filename = imgSrc.split('/').pop();
+        
+        // Add data-category attribute
+        for (const [category, files] of Object.entries(categories)) {
+          if (files.includes(filename)) {
+            item.setAttribute('data-category', category);
+            break;
+          }
+        }
+      });
+      
+      // For mobile layout
+      document.querySelectorAll('.gallery .gallery-item').forEach(item => {
+        const imgSrc = item.querySelector('img').getAttribute('src');
+        const filename = imgSrc.split('/').pop();
+        
+        // Add data-category attribute
+        for (const [category, files] of Object.entries(categories)) {
+          if (files.includes(filename)) {
+            item.setAttribute('data-category', category);
+            break;
+          }
+        }
+      });
+    }
+    
+    // Add filter functionality
+    function setupFilters() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const filter = this.getAttribute('data-filter');
+          
+          // Update active state
+          filterBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Filter desktop images
+          document.querySelectorAll('.results .result').forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.classList.remove('hidden');
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+          
+          // Filter mobile images
+          document.querySelectorAll('.gallery .gallery-item').forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.classList.remove('hidden');
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+        });
+      });
+    }
+    
+    // Initialize
+    function init() {
+      // Create and insert filter container for desktop
+      const filterContainer = document.querySelector('.filter-container').cloneNode(true);
+      document.querySelector('.pc_images').insertBefore(filterContainer, document.querySelector('.results'));
+      
+      // Create and insert filter container for mobile
+      const mobileFilterContainer = document.querySelector('.filter-container').cloneNode(true);
+      document.querySelector('.gallery-container').insertBefore(mobileFilterContainer, document.querySelector('.gallery'));
+      
+      // Remove the original filter container
+      document.querySelector('.filter-container').remove();
+      
+      addCategoryAttributes();
+      setupFilters();
+    }
+    
+    init();
+  });
+</script>
