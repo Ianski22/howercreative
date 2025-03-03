@@ -122,6 +122,74 @@
 
 	
   <script src="script.js"></script>
+	 <script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Define image categories based on filenames
+  const categories = {
+    cars: ['ferrari.jpg', 'mercedes.jpg', 'porsche.jpg'],
+    sports: ['seahawks.jpg', 'mj.jpg', 'np.jpg'],
+    other: ['seattle.jpg', 'vans.jpg', 'gas.jpg']
+  };
+  
+  // Insert filter buttons in the middle of the page
+  const filterContainer = document.querySelector('.filter-buttons-container');
+  
+  // For desktop view: insert before the results list
+  const pcImages = document.querySelector('.pc_images');
+  const resultsElement = document.querySelector('.results');
+  pcImages.insertBefore(filterContainer.cloneNode(true), resultsElement);
+  
+  // For mobile view: insert before the gallery
+  const galleryContainer = document.querySelector('.gallery-container');
+  const galleryElement = document.querySelector('.gallery');
+  galleryContainer.insertBefore(filterContainer, galleryElement);
+  
+  // Set up filter functionality for both desktop and mobile views
+  document.querySelectorAll('.filter-buttons-container').forEach(container => {
+    container.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Update active state on both sets of buttons
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          if (b.getAttribute('data-filter') === this.getAttribute('data-filter')) {
+            b.classList.add('active');
+          } else {
+            b.classList.remove('active');
+          }
+        });
+        
+        const filter = this.getAttribute('data-filter');
+        
+        // Filter desktop images
+        document.querySelectorAll('.results .result').forEach(item => {
+          const imgSrc = item.querySelector('img').getAttribute('src');
+          const filename = imgSrc.split('/').pop();
+          
+          if (filter === 'all' || categories[filter].includes(filename)) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+        
+        // Filter mobile images
+        document.querySelectorAll('.gallery .gallery-item').forEach(item => {
+          const imgSrc = item.querySelector('img').getAttribute('src');
+          const filename = imgSrc.split('/').pop();
+          
+          if (filter === 'all' || categories[filter].includes(filename)) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+  
+  // Remove the original container
+  filterContainer.remove();
+});
+</script>
 
 	
 
