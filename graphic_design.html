@@ -9,6 +9,38 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloucester+MT+Extra+Condensed&display=swap">
   <link rel="stylesheet" href="styles.css">
    <link rel="icon" href="images/logo.png" type="images/logo.png">
+
+<style>
+  .filter-buttons-container {
+    text-align: center;
+    margin: 20px auto;
+    font-family: 'Gloucester MT Extra Condensed', sans-serif;
+  }
+  
+  .filter-btn {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 18px;
+    transition: all 0.2s ease;
+  }
+  
+  .filter-btn:hover {
+    background-color: #eaeaea;
+  }
+  
+  .filter-btn.active {
+    background-color: #333;
+    color: white;
+    border-color: #333;
+  }
+</style>
+	  
   </head>
   <body class="graphic">
   <header>
