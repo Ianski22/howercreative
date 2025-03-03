@@ -39,6 +39,19 @@
     color: white;
     border-color: #333;
   }
+  
+  /* Centering styles for the filtered display */
+  .results.filtered {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .gallery.filtered {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 </style>
 	  
   </head>
@@ -162,7 +175,7 @@
 
 	
   <script src="script.js"></script>
-	 <script>
+	<script>
 document.addEventListener('DOMContentLoaded', function() {
   // Define image categories based on filenames
   const categories = {
@@ -183,6 +196,40 @@ document.addEventListener('DOMContentLoaded', function() {
   const galleryContainer = document.querySelector('.gallery-container');
   const galleryElement = document.querySelector('.gallery');
   galleryContainer.insertBefore(filterContainer, galleryElement);
+  
+  // Function to center images dynamically
+  function centerImages(filter) {
+    const resultsContainer = document.querySelector('.results');
+    const galleryContainer = document.querySelector('.gallery');
+    
+    if (filter === 'all') {
+      // Return to original layout
+      resultsContainer.classList.remove('filtered');
+      galleryContainer.classList.remove('filtered');
+      
+      // Reset any inline styles that might affect layout
+      document.querySelectorAll('.results .result').forEach(item => {
+        item.style.margin = '';
+      });
+      
+      document.querySelectorAll('.gallery .gallery-item').forEach(item => {
+        item.style.margin = '';
+      });
+    } else {
+      // Apply centering to filtered results
+      resultsContainer.classList.add('filtered');
+      galleryContainer.classList.add('filtered');
+      
+      // Add some spacing between items for better appearance
+      document.querySelectorAll('.results .result:not([style*="display: none"])').forEach(item => {
+        item.style.margin = '10px';
+      });
+      
+      document.querySelectorAll('.gallery .gallery-item:not([style*="display: none"])').forEach(item => {
+        item.style.margin = '10px';
+      });
+    }
+  }
   
   // Set up filter functionality for both desktop and mobile views
   document.querySelectorAll('.filter-buttons-container').forEach(container => {
@@ -222,6 +269,9 @@ document.addEventListener('DOMContentLoaded', function() {
             item.style.display = 'none';
           }
         });
+        
+        // Apply centering based on the current filter
+        centerImages(filter);
       });
     });
   });
