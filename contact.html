@@ -5,89 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contact</title>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloucester+MT+Extra+Condensed&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloucester+MT+Extra+Condensed&display=swap">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/logo.png" type="images/logo.png">
   </head>
   <body>
   <header>
    <nav class="navbar">
- <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="photography.html">Photography</a></li>
-    <li><a href="graphic_design.html">Graphic Design</a></li>
-	<li><a href="contact.html">Contact</a></li>
-  </ul>
-  
-  
-        </nav>
-			<div class="logo">
-		<img src="images/logo.png" alt="Image 1">
-		</div>
-		</header>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="photography.html">Photography</a></li>
+      <li><a href="graphic_design.html">Graphic Design</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+   </nav>
+   <div class="logo">
+     <img src="images/logo.png" alt="Image 1">
+   </div>
+  </header>
 	
-    <main>
+  <main>
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="overlay-content">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="photography.html">Photography</a>
+        <a href="graphic_design.html">Graphic Design</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="burger">
+      <span onclick="openNav()">&#9776;</span>
+    </div>
 	
-	<div id="myNav" class="overlay">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <div class="overlay-content">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="photography.html">Photography</a>
-    <a href="graphic_design.html">Graphic Design</a>
-	<a href="contact.html">Contact</a>
-  </div>
-</div>
-
-<div class="burger">
-<span onclick="openNav()">&#9776;</span>
-</div>
-	
-	<div class="contain">
-	<div class="about_me_img">
-<img src="images/contact.jpg" alt="Image 1">
-</div>
-
-<div class="text-content">
-	<div class="contact-card">
-		<div class="contact-header">CONTACT ME</div>
-		   <p> Sign up to receive our newsletter for 10% off! </p>
-		   <div id="offerEnds"></div>
-		<form class="contact-body">
-			<input class="contact-body__email" placeholder="Email" type="email">
-			<textarea class="contact-body__message" placeholder="Message"></textarea>
-			<button class="contact-body__submit" type="submit">SEND</button>
-		</form>
-		<div class="social-links">
-			<a href="https://x.com/Ianski221" target="_blank">
-				<img src="images/twitter-logo.png" alt="Twitter">
-			</a>
-			<a href="https://www.instagram.com/ianski22/?hl=en" target="_blank">
-				<img src="images/insta.png" alt="Instagram">
-			</a>
-		</div>
-	</div>
-</div>
-
-
-
- <div class="image-container">
-
- 
-
- 
-
-	</div>
-
-		
-    </main>
-
-	<footer>
-<p>Ian Hower</p>
-	</footer>
-	  <script src="script.js"></script>
-	   <script src="lesson78.js"></script>
-  </body>
- 
+    <div class="contain">
+      <div class="about_me_img">
+        <img src="images/contact.jpg" alt="Image 1">
+      </div>
+      <div class="text-content">
+        <div class="contact-card">
+          <div class="contact-header">CONTACT ME</div>
+          <p>Sign up to receive our newsletter for 10% off!</p>
+          <div id="offerEnds"></div>
+          <div id="formStatus" style="display: none;"></div>
+          <form class="contact-body" id="contactForm">
+            <input class="contact-body__email" name="email" placeholder="Email" type="email" required>
+            <textarea class="contact-body__message" name="message" placeholder="Message" required></textarea>
+            <button class="contact-body__submit" type="submit">SEND</button>
+          </form>
+          <div class="social-links">
+            <a href="https://x.com/Ianski221" target="_blank">
+              <img src="images/twitter-logo.png" alt="Twitter">
+            </a>
+            <a href="https://www.instagram.com/ianski22/?hl=en" target="_blank">
+              <img src="images/insta.png" alt="Instagram">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="image-container"></div>
+    </div>
+  </main>
+  <footer>
+    <p>Ian Hower</p>
+  </footer>
+  <script src="script.js"></script>
+  <script src="lesson78.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const email = document.querySelector('.contact-body__email').value;
+      const message = document.querySelector('.contact-body__message').value;
+      const statusDiv = document.getElementById('formStatus');
+      
+      if (!email || !message) {
+        statusDiv.textContent = 'Please fill out all fields.';
+        statusDiv.style.display = 'block';
+        statusDiv.style.color = 'red';
+        return;
+      }
+      
+      // Using EmailJS service - you'll need to sign up at emailjs.com
+      // and include their script in your actual implementation
+      const serviceID = 'default_service'; // Replace with your service ID
+      const templateID = 'template_contact_form'; // Replace with your template ID
+      const userID = 'user_yourUserID'; // Replace with your user ID
+      
+      const templateParams = {
+        to_email: 'ianhowerdesign@gmail.com',
+        from_email: email,
+        message: message
+      };
+      
+      // Show loading state
+      statusDiv.textContent = 'Sending message...';
+      statusDiv.style.display = 'block';
+      statusDiv.style.color = 'blue';
+      
+      // If you're using EmailJS, uncomment this section
+      /*
+      emailjs.send(serviceID, templateID, templateParams, userID)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          statusDiv.textContent = 'Message sent successfully!';
+          statusDiv.style.color = 'green';
+          document.getElementById('contactForm').reset();
+        }, function(error) {
+          console.log('FAILED...', error);
+          statusDiv.textContent = 'Failed to send message. Please try again.';
+          statusDiv.style.color = 'red';
+        });
+      */
+      
+      // For demonstration purposes, simulate successful submission
+      // Remove this in production and uncomment the EmailJS code above
+      setTimeout(function() {
+        statusDiv.textContent = 'Message sent successfully!';
+        statusDiv.style.color = 'green';
+        document.getElementById('contactForm').reset();
+      }, 1500);
+    });
+    
+    // Add countdown timer for the offer
+    function updateOfferCountdown() {
+      const now = new Date();
+      const endOfDay = new Date();
+      endOfDay.setHours(23, 59, 59, 999);
+      
+      const timeLeft = endOfDay - now;
+      
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+      
+      document.getElementById('offerEnds').textContent = 
+        `Offer ends in: ${hours}h ${minutes}m ${seconds}s`;
+    }
+    
+    updateOfferCountdown();
+    setInterval(updateOfferCountdown, 1000);
+  </script>
+  <!-- Add EmailJS script reference here -->
+  <!-- <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("user_yourUserID"); // Replace with your user ID
+    })();
+  </script> -->
+</body>
 </html>
