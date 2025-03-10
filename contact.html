@@ -48,11 +48,10 @@
         <div class="contact-card">
           <div class="contact-header">CONTACT ME</div>
           <p>Sign up to receive our newsletter for 10% off!</p>
-          <div id="offerEnds"></div>
-          <div id="formStatus" style="display: none;"></div>
+          <div id="formStatus" style="display: none; margin: 10px 0; padding: 10px; border-radius: 4px;"></div>
           <form class="contact-body" id="contactForm">
-            <input class="contact-body__email" name="email" placeholder="Email" type="email" required>
-            <textarea class="contact-body__message" name="message" placeholder="Message" required></textarea>
+            <input class="contact-body__email" id="email" name="email" placeholder="Email" type="email" required>
+            <textarea class="contact-body__message" id="message" name="message" placeholder="Message" required></textarea>
             <button class="contact-body__submit" type="submit">SEND</button>
           </form>
           <div class="social-links">
@@ -77,83 +76,59 @@
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
-      const email = document.querySelector('.contact-body__email').value;
-      const message = document.querySelector('.contact-body__message').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
       const statusDiv = document.getElementById('formStatus');
       
       if (!email || !message) {
         statusDiv.textContent = 'Please fill out all fields.';
         statusDiv.style.display = 'block';
-        statusDiv.style.color = 'red';
+        statusDiv.style.backgroundColor = '#ffdddd';
+        statusDiv.style.color = '#ff0000';
         return;
       }
       
-      // Using EmailJS service - you'll need to sign up at emailjs.com
-      // and include their script in your actual implementation
-      const serviceID = 'default_service'; // Replace with your service ID
-      const templateID = 'template_contact_form'; // Replace with your template ID
-      const userID = 'user_yourUserID'; // Replace with your user ID
-      
-      const templateParams = {
-        to_email: 'ianhowerdesign@gmail.com',
-        from_email: email,
-        message: message
-      };
-      
-      // Show loading state
       statusDiv.textContent = 'Sending message...';
       statusDiv.style.display = 'block';
-      statusDiv.style.color = 'blue';
+      statusDiv.style.backgroundColor = '#e6f7ff';
+      statusDiv.style.color = '#0066cc';
       
-      // If you're using EmailJS, uncomment this section
-      /*
-      emailjs.send(serviceID, templateID, templateParams, userID)
-        .then(function(response) {
-          console.log('SUCCESS!', response.status, response.text);
-          statusDiv.textContent = 'Message sent successfully!';
-          statusDiv.style.color = 'green';
-          document.getElementById('contactForm').reset();
-        }, function(error) {
-          console.log('FAILED...', error);
-          statusDiv.textContent = 'Failed to send message. Please try again.';
-          statusDiv.style.color = 'red';
-        });
-      */
+      // Using fetch API to send the form data
+      const formData = new FormData();
+      formData.append('email', email);
+      formData.append('message', message);
       
-      // For demonstration purposes, simulate successful submission
-      // Remove this in production and uncomment the EmailJS code above
-      setTimeout(function() {
+      // For sending to an email service like Email.js or your own backend
+      fetch('https://formsubmit.co/ajax/ianhowerdesign@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          message: message
+        })
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
         statusDiv.textContent = 'Message sent successfully!';
-        statusDiv.style.color = 'green';
+        statusDiv.style.backgroundColor = '#ddffdd';
+        statusDiv.style.color = '#008800';
         document.getElementById('contactForm').reset();
-      }, 1500);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        statusDiv.textContent = 'There was a problem sending your message. Please try again later.';
+        statusDiv.style.backgroundColor = '#ffdddd';
+        statusDiv.style.color = '#ff0000';
+      });
     });
-    
-    // Add countdown timer for the offer
-    function updateOfferCountdown() {
-      const now = new Date();
-      const endOfDay = new Date();
-      endOfDay.setHours(23, 59, 59, 999);
-      
-      const timeLeft = endOfDay - now;
-      
-      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-      
-      document.getElementById('offerEnds').textContent = 
-        `Offer ends in: ${hours}h ${minutes}m ${seconds}s`;
-    }
-    
-    updateOfferCountdown();
-    setInterval(updateOfferCountdown, 1000);
   </script>
-  <!-- Add EmailJS script reference here -->
-  <!-- <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
-  <script type="text/javascript">
-    (function() {
-      emailjs.init("user_yourUserID"); // Replace with your user ID
-    })();
-  </script> -->
 </body>
 </html>
