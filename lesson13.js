@@ -18,12 +18,12 @@
       statusDiv.style.backgroundColor = '#e6f7ff';
       statusDiv.style.color = '#0066cc';
       
-      // Using fetch API to send the form data
+      // Using fetch API
       const formData = new FormData();
       formData.append('email', email);
       formData.append('message', message);
       
-      // For sending to an email service like Email.js or your own backend
+      // For sending to an email service
       fetch('https://formsubmit.co/ajax/ianhowerdesign@gmail.com', {
         method: 'POST',
         headers: {
